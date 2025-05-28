@@ -77,19 +77,31 @@ const LoginUser = async (req, res) => {
     );
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
+    // return res.json({
+    //   message: "User Logged in successfully",
+    //   success: true,
+      // user: {
+      //   id: validUser._id,
+      //   role: validUser.role,
+      //   Email: validUser.Email,
+      //   userName:validUser.username,
+      // },
+    // });
     return res.json({
-      message: "User Logged in successfully",
-      success: true,
-      user: {
+      success:true,
+      message:'User Logged in successfully',
+      token,
+        user: {
         id: validUser._id,
         role: validUser.role,
         Email: validUser.Email,
         userName:validUser.username,
       },
-    });
+      
+    })
   } catch (error) {
     return res.json({
       message: error.message,
