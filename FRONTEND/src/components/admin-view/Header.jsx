@@ -2,19 +2,24 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { AlignJustify, LogOut } from 'lucide-react'
 import { useDispatch } from 'react-redux'
-import { logoutUser } from '@/redux/authSlice'
+import { logoutUser, resetTokenAndCredential } from '@/redux/authSlice'
 import { toast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
 
 const Header = ({setOpen}) => {
+  const navigate=useNavigate()
   const dispatch=useDispatch()
   const HandleLogout=()=>{
-      dispatch(logoutUser()).then((data)=>{
-   if(data?.payload?.success){
-    toast.success(data?.payload?.message)
-   }
-      })
+  //     dispatch(logoutUser()).then((data)=>{
+  //  if(data?.payload?.success){
+  //   toast.success(data?.payload?.message)
+  //  }
+  //     })
 
-    
+  dispatch(resetTokenAndCredential());
+  sessionStorage.clear();
+  navigate('/auth/login')
+
   }
   return (
     <header className='flex items-center justify-between px-4 py-3 bg-background border-b'>

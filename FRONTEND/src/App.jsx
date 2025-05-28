@@ -32,9 +32,8 @@ const App = () => {
   const{isAuthenticated,user,isLoading}=useSelector((state)=>state.auth)
   const dispatch=useDispatch()
   useEffect(()=>{
-      dispatch(checkAUth()).then((data)=>{
-        console.log(data)
-      })
+     const token=JSON.parse(sessionStorage.getItem('token'))
+      dispatch(checkAUth(token))
   },[dispatch])
   if(isLoading){
     return  <div className="flex flex-col space-y-3">

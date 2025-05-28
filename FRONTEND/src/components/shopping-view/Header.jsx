@@ -56,11 +56,14 @@ const HeaderRightContent = () => {
   const [openCartSheet,setOpenCartSheet]=useState(false)
   const navigate = useNavigate();
   const HandleLogout = () => {
-    dispatch(logoutUser()).then((data) => {
-      if (data?.payload?.success) {
-        toast.success(data?.payload?.message);
-      }
-    });
+    // dispatch(logoutUser()).then((data) => {
+    //   if (data?.payload?.success) {
+    //     toast.success(data?.payload?.message);
+    //   }
+    // });
+    dispatch(resetTokenAndCredential());
+      sessionStorage.clear();
+      navigate('/auth/login')
   };
 
   useEffect(()=>{
