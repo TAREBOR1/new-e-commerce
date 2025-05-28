@@ -15,7 +15,7 @@ import {
 } from "../ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { useDispatch } from "react-redux";
-import { logoutUser } from "@/redux/authSlice";
+import { logoutUser, resetTokenAndCredential } from "@/redux/authSlice";
 import { toast } from "sonner";
 import CartWrapper from "./CartWrapper";
 import { getCart } from "@/redux/shop/cartSlice";
