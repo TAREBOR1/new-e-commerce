@@ -59,8 +59,7 @@ const authSlice=createSlice({
        state.token=null,
        state.user=null
       })
-      }
-    ,
+      },
    extraReducers:(builder)=>{
       builder.addCase(registerUser.pending,(state)=>{
         state.isLoading=true
